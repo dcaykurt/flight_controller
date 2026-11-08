@@ -89,7 +89,7 @@ Arm tamamlandığında o anki IMU açıları sıfır noktası olarak kaydedilir,
 
 </details>
 
-## Depo Yapısı
+## Repo Yapısı
 
 ```
 firmware/

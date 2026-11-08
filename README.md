@@ -130,4 +130,4 @@ Bu proje [MIT Lisansı](LICENSE) ile yayımlanmıştır. `firmware/Drivers/` alt
 
 ---
 
-**Deniz Can Aykurt** · Gömülü Sistemler ve Robotik Mühendisi
+**Deniz Can Aykurt** · Elektrik Elektronik Mühendisi

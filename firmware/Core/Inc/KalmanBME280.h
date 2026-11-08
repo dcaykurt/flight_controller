@@ -1,0 +1,11 @@
+#ifndef _KALMANBME280_H_
+#define _KALMANBME280_H_
+
+
+
+void kalmanFilter4d_configure(float aVariance,  float kAdapt, float zInitial, float vInitial, float aInitial);
+void kalmanFilter4d_predict(float dt);
+float kalmanFilter4d_update(float zm, float am, float* pz, float* pv);
+
+#endif
+

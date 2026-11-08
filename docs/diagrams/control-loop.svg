@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 455" width="1200" height="455" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .t  { font-size: 14px; font-weight: 600; fill: #0f172a; }
+      .s  { font-size: 11.5px; fill: #475569; }
+      .m  { font-size: 12px; fill: #1e3a8a; font-family: "JetBrains Mono", Consolas, monospace; }
+      .w  { stroke: #475569; stroke-width: 1.6; fill: none; }
+      .fb { stroke: #dc2626; stroke-width: 1.6; fill: none; }
+      .box { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.4; }
+      .pid { fill: #dbeafe; stroke: #2563eb; stroke-width: 1.5; }
+      .sum { fill: #ffffff; stroke: #475569; stroke-width: 1.6; }
+      .sg  { font-size: 13px; font-weight: 700; fill: #334155; }
+    </style>
+  </defs>
+  <rect width="1200" height="455" fill="#ffffff"/>
+  <text x="600" y="30" text-anchor="middle" font-size="19" font-weight="700" fill="#0f172a">LOTUS — 100 Hz Kontrol Döngüsü</text>
+
+  <!-- Sticks -->
+  <rect x="20" y="55" width="130" height="260" rx="12" class="box"/>
+  <text x="85" y="178" text-anchor="middle" class="t">Kumanda</text>
+  <text x="85" y="197" text-anchor="middle" class="s">SBUS · 306–1693</text>
+
+  <!-- Mapping -->
+  <rect x="190" y="55" width="180" height="50" rx="8" class="box"/>
+  <text x="280" y="76" text-anchor="middle" class="t">Gaz</text>
+  <text x="280" y="94" text-anchor="middle" class="s">→ 1000–2000 µs</text>
+  <rect x="190" y="165" width="180" height="50" rx="8" class="box"/>
+  <text x="280" y="186" text-anchor="middle" class="t">Roll / Pitch</text>
+  <text x="280" y="204" text-anchor="middle" class="s">→ hedef açı ±20°</text>
+  <rect x="190" y="265" width="180" height="50" rx="8" class="box"/>
+  <text x="280" y="286" text-anchor="middle" class="t">Yaw (ölü bölge)</text>
+  <text x="280" y="304" text-anchor="middle" class="s">→ hedef hız ±180 °/s</text>
+  <path d="M150,80 L188,80" class="w" marker-end="url(#a)"/>
+  <path d="M150,190 L188,190" class="w" marker-end="url(#a)"/>
+  <path d="M150,290 L188,290" class="w" marker-end="url(#a)"/>
+
+  <!-- Sums -->
+  <circle cx="440" cy="190" r="14" class="sum"/>
+  <text x="440" y="195" text-anchor="middle" class="sg">Σ</text>
+  <circle cx="400" cy="290" r="14" class="sum"/>
+  <text x="400" y="295" text-anchor="middle" class="sg">Σ</text>
+  <path d="M370,190 L424,190" class="w" marker-end="url(#a)"/>
+  <path d="M370,290 L384,290" class="w" marker-end="url(#a)"/>
+  <text x="417" y="183" class="sg">+</text>
+  <text x="377" y="283" class="sg">+</text>
+  <text x="446" y="222" class="sg" fill="#dc2626">−</text>
+  <text x="406" y="322" class="sg" fill="#dc2626">−</text>
+
+  <!-- PIDs -->
+  <rect x="490" y="160" width="180" height="60" rx="8" class="pid"/>
+  <text x="580" y="182" text-anchor="middle" class="t">Açı PID ×2</text>
+  <text x="580" y="200" text-anchor="middle" class="s">roll, pitch · I yalnızca |e| &lt; 5°</text>
+  <text x="580" y="214" text-anchor="middle" class="s">Kp 1.65 · Ki 0.35 · Kd 0.5</text>
+  <rect x="490" y="260" width="180" height="60" rx="8" class="pid"/>
+  <text x="580" y="282" text-anchor="middle" class="t">Hız PID</text>
+  <text x="580" y="300" text-anchor="middle" class="s">yaw</text>
+  <text x="580" y="314" text-anchor="middle" class="s">Kp 1.8 · Ki 0.2</text>
+  <path d="M454,190 L488,190" class="w" marker-end="url(#a)"/>
+  <!-- yaw lane with hop over the roll/pitch feedback line at x=440 -->
+  <path d="M414,290 L433,290 A7,7 0 0 1 447,290 L488,290" class="w" marker-end="url(#a)"/>
+
+  <!-- Mixer -->
+  <rect x="710" y="55" width="180" height="260" rx="12" class="box"/>
+  <text x="800" y="120" text-anchor="middle" class="t">X motor karıştırıcı</text>
+  <text x="800" y="160" text-anchor="middle" class="m">M1 = T + Y + P + R</text>
+  <text x="800" y="182" text-anchor="middle" class="m">M2 = T − Y − P + R</text>
+  <text x="800" y="204" text-anchor="middle" class="m">M3 = T + Y − P − R</text>
+  <text x="800" y="226" text-anchor="middle" class="m">M4 = T − Y + P − R</text>
+  <text x="800" y="262" text-anchor="middle" class="s">1250 µs altında PID sıfırlanır</text>
+  <path d="M370,80 L708,80" class="w" marker-end="url(#a)"/>
+  <text x="540" y="72" text-anchor="middle" class="s">T</text>
+  <path d="M670,190 L708,190" class="w" marker-end="url(#a)"/>
+  <text x="689" y="182" text-anchor="middle" class="s">R, P</text>
+  <path d="M670,290 L708,290" class="w" marker-end="url(#a)"/>
+  <text x="689" y="282" text-anchor="middle" class="s">Y</text>
+
+  <!-- Limit -->
+  <rect x="920" y="155" width="110" height="70" rx="8" class="box"/>
+  <text x="975" y="182" text-anchor="middle" class="t">Sınırlama</text>
+  <text x="975" y="200" text-anchor="middle" class="s">1200–1900 µs</text>
+  <path d="M890,190 L918,190" class="w" marker-end="url(#a)"/>
+
+  <!-- ESC -->
+  <rect x="1060" y="155" width="120" height="70" rx="8" class="box"/>
+  <text x="1120" y="182" text-anchor="middle" class="t">ESC + motorlar</text>
+  <text x="1120" y="200" text-anchor="middle" class="s">TIM3 PWM 50 Hz</text>
+  <path d="M1030,190 L1058,190" class="w" marker-end="url(#a)"/>
+
+  <!-- IMU -->
+  <rect x="1060" y="370" width="120" height="64" rx="8" class="box"/>
+  <text x="1120" y="396" text-anchor="middle" class="t">BNO055</text>
+  <text x="1120" y="414" text-anchor="middle" class="s">Euler φ, θ, ψ</text>
+  <path d="M1120,225 L1120,368" class="w" marker-end="url(#a)"/>
+  <text x="1130" y="300" class="s">gövde</text>
+  <text x="1130" y="315" class="s">hareketi</text>
+
+  <!-- Feedback -->
+  <path d="M1060,402 L440,402 L440,206" class="fb" marker-end="url(#a)"/>
+  <path d="M440,402 L400,402 L400,306" class="fb" marker-end="url(#a)"/>
+  <text x="452" y="250" class="s" fill="#b91c1c">φ, θ (− arm ofseti)</text>
+  <text x="392" y="362" text-anchor="end" class="s" fill="#b91c1c">Δψ / Δt (±180° sarmalı)</text>
+  <text x="750" y="394" text-anchor="middle" class="s" fill="#b91c1c">IMU geri beslemesi</text>
+</svg>

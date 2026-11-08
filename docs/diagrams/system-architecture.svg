@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 610" width="980" height="610" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .t  { font-size: 15px; font-weight: 600; fill: #0f172a; }
+      .s  { font-size: 12px; fill: #475569; }
+      .l  { font-size: 11.5px; fill: #334155; }
+      .w  { stroke: #475569; stroke-width: 1.6; fill: none; }
+      .ext { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.4; }
+      .task { fill: #ffffff; stroke: #93c5fd; stroke-width: 1.3; }
+    </style>
+  </defs>
+
+  <rect width="980" height="610" fill="#ffffff"/>
+  <text x="490" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#0f172a">LOTUS — Sistem Mimarisi</text>
+
+  <!-- MCU -->
+  <rect x="330" y="100" width="320" height="440" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="490" y="128" text-anchor="middle" class="t">STM32F407VG</text>
+  <text x="490" y="146" text-anchor="middle" class="s">Cortex-M4 @ 168 MHz · STM32 HAL</text>
+
+  <rect x="352" y="164" width="276" height="54" rx="8" class="task"/>
+  <text x="366" y="186" class="t" font-size="13.5">TIM4 · 100 Hz</text>
+  <text x="366" y="205" class="s">SBUS çözme · arm / disarm mantığı</text>
+
+  <rect x="352" y="268" width="276" height="54" rx="8" class="task"/>
+  <text x="366" y="290" class="t" font-size="13.5">TIM5 · 100 Hz</text>
+  <text x="366" y="309" class="s">IMU okuma (I2C DMA) · eksen ofseti</text>
+
+  <rect x="352" y="372" width="276" height="70" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+  <text x="366" y="394" class="t" font-size="13.5">TIM7 · 100 Hz — kontrol döngüsü</text>
+  <text x="366" y="413" class="s">kumanda eşleme → roll / pitch / yaw PID</text>
+  <text x="366" y="431" class="s">→ X motor karıştırıcı → sınırlama</text>
+
+  <rect x="352" y="456" width="132" height="70" rx="8" class="task"/>
+  <text x="366" y="478" class="t" font-size="13.5">TIM8 · 1 Hz</text>
+  <text x="366" y="497" class="s">arm süre sayacı</text>
+
+  <rect x="496" y="456" width="132" height="70" rx="8" class="task"/>
+  <text x="510" y="478" class="t" font-size="13.5">TIM3 · 50 Hz</text>
+  <text x="510" y="497" class="s">4 × ESC PWM</text>
+  <text x="510" y="514" class="s">1000–2000 µs</text>
+
+  <!-- RC receiver -->
+  <rect x="30" y="154" width="190" height="74" rx="12" class="ext"/>
+  <text x="125" y="184" text-anchor="middle" class="t">RC Alıcı</text>
+  <text x="125" y="204" text-anchor="middle" class="s">SBUS · 12 kanal</text>
+  <path d="M220,191 L350,191" class="w" marker-end="url(#a)"/>
+  <text x="275" y="182" text-anchor="middle" class="l">USART1 + DMA</text>
+  <text x="275" y="208" text-anchor="middle" class="l">100 kbaud 8E2</text>
+
+  <!-- IMU -->
+  <rect x="30" y="258" width="190" height="74" rx="12" class="ext"/>
+  <text x="125" y="288" text-anchor="middle" class="t">BNO055 IMU</text>
+  <text x="125" y="308" text-anchor="middle" class="s">9-DoF · NDOF sensör füzyonu</text>
+  <path d="M220,295 L350,295" class="w" marker-end="url(#a)"/>
+  <text x="275" y="286" text-anchor="middle" class="l">I2C1 + DMA</text>
+  <text x="275" y="312" text-anchor="middle" class="l">Euler açıları</text>
+
+  <!-- Ground station -->
+  <rect x="30" y="370" width="190" height="74" rx="12" class="ext"/>
+  <text x="125" y="400" text-anchor="middle" class="t">Yer İstasyonu</text>
+  <text x="125" y="420" text-anchor="middle" class="s">telemetri · PID ayarı</text>
+  <path d="M222,407 L350,407" class="w" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="275" y="398" text-anchor="middle" class="l">USART2 + DMA</text>
+  <text x="275" y="424" text-anchor="middle" class="l">57600 baud</text>
+
+  <!-- ESCs & motors -->
+  <rect x="740" y="160" width="200" height="74" rx="12" class="ext"/>
+  <text x="840" y="190" text-anchor="middle" class="t">4 × ESC</text>
+  <text x="840" y="210" text-anchor="middle" class="s">PA6 · PA7 · PB0 · PB1</text>
+  <path d="M628,491 C700,491 680,197 738,197" class="w" marker-end="url(#a)"/>
+
+  <rect x="740" y="270" width="200" height="74" rx="12" class="ext"/>
+  <text x="840" y="300" text-anchor="middle" class="t">4 × Fırçasız Motor</text>
+  <text x="840" y="320" text-anchor="middle" class="s">X konfigürasyon</text>
+  <path d="M840,234 L840,268" class="w" marker-end="url(#a)"/>
+
+  <!-- LED -->
+  <rect x="740" y="466" width="200" height="60" rx="12" class="ext"/>
+  <text x="840" y="492" text-anchor="middle" class="t">Durum LED'leri</text>
+  <text x="840" y="511" text-anchor="middle" class="s">ARM göstergesi (PD9)</text>
+  <path d="M650,530 C700,530 700,496 738,496" class="w" marker-end="url(#a)"/>
+
+  <!-- footer -->
+  <text x="490" y="580" text-anchor="middle" class="s">Tüm görevler zamanlayıcı kesmelerinde çalışır · çevre birimi aktarımları DMA ile yapılır</text>
+</svg>

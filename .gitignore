@@ -1,0 +1,28 @@
+# Keil MDK derleme çıktıları
+firmware/MDK-ARM/LOTUS_AFS/
+*.o
+*.d
+*.crf
+*.lst
+*.map
+*.htm
+*.lnp
+*.sct
+*.dep
+*.axf
+*.hex
+*.bin
+*.iex
+*.build_log.htm
+# Kullanıcıya özel IDE dosyaları
+*.uvguix.*
+*.uvgui.*
+*.bak
+JLinkLog.txt
+# STM32CubeIDE
+Debug/
+Release/
+.settings/
+
+# CubeMX önbelleği (yerel yollar içerir)
+.mxproject
